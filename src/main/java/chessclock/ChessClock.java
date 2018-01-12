@@ -4,7 +4,12 @@ public class ChessClock {
 
 	protected int[] returnIntegerArray(String initialTime)
 	{
-		int[] timeDigits = {3, 4, 5};
+		String[] timeChars = initialTime.replace(".", "").split("");
+		int[] timeDigits = new int[timeChars.length];
+		for (int i = 0; i < timeChars.length; i++) 
+		{
+			timeDigits[i] = Integer.parseInt(timeChars[i]);
+		}
 		return timeDigits;
 	}
 }
