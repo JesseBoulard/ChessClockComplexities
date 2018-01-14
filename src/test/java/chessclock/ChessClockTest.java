@@ -180,4 +180,13 @@ public class ChessClockTest {
 		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
 		assertArrayEquals(expected, actual);
 	}
+	
+	@Test
+	public void returnTimeDigitsAfterSubtractionTestWhenPassed050And7Subtracted() {
+		int secondsToSubtract = 7;
+		int[] timeDigits = {0, 5, 0};
+		int[] expected = {0, 4, 3};
+		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
+		assertArrayEquals(expected, actual);
+	}
 }
