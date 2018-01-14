@@ -15,6 +15,11 @@ public class ChessClock {
 	
 	protected int ifGreaterThan8Return0(int seconds)
 	{
-		return 0;
+		int secondsToSubtract = seconds;
+		if (secondsToSubtract > 8) 
+		{
+			secondsToSubtract = 0;
+		}
+		return secondsToSubtract;
 	}
 }
