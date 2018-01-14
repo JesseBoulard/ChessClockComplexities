@@ -28,4 +28,12 @@ public class ChessClockTest {
 		int actual = chessClock.ifGreaterThan8Return0(seconds);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifGreaterThan8Return0TestReturn8WhenPassed8() {
+		int seconds = 8;
+		int expected = 8;
+		int actual = chessClock.ifGreaterThan8Return0(seconds);
+		assertEquals(expected, actual);
+	}
 }
