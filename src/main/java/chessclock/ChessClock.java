@@ -77,4 +77,8 @@ public class ChessClock {
 		}
 		return timeDigits;
 	}
+
+	protected int returnSumOfTimeDigits(int[] timeDigits) {
+		return 0;
+	}
 }

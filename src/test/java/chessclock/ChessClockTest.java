@@ -189,4 +189,12 @@ public class ChessClockTest {
 		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
 		assertArrayEquals(expected, actual);
 	}
+	
+	@Test
+	public void returnSumOfTimeDigitsTest() {
+		int[] timeDigits = {0, 0, 0};
+		int expected = 0;
+		int actual = chessClock.returnSumOfTimeDigits(timeDigits);
+		assertEquals(expected, actual);
+	}
 }
