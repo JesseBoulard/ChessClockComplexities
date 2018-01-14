@@ -34,6 +34,10 @@ public class ChessClock {
 	
 	protected int ifMinutesAndTensAre0Return0(int minutes, int tens, int seconds)
 	{
-		return 0;
+		if (minutes == 0 && tens == 0) 
+		{
+			seconds = 0;
+		}
+		return seconds;
 	}
 }

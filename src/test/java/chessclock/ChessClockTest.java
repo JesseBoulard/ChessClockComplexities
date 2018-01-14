@@ -64,4 +64,14 @@ public class ChessClockTest {
 		int actual = chessClock.ifMinutesAndTensAre0Return0(minutes, tens, seconds);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifMinutesAndTensAre0Return0TestWhenMinutesAre2() {
+		int minutes = 2;
+		int tens = 0;
+		int seconds = 8;
+		int expected = 8;
+		int actual = chessClock.ifMinutesAndTensAre0Return0(minutes, tens, seconds);
+		assertEquals(expected, actual);
+	}
 }
