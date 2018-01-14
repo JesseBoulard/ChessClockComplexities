@@ -115,4 +115,13 @@ public class ChessClockTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void secondsToSubtractFromPlayer2TestWhenPlayer2SecondsIsLesser() {
+		int secondsToSubtractFromPlayer2 = 6;
+		int secondsToSubtractFromPlayer1 = 7;
+		int limit = 8;
+		int expected = 6;
+		int actual = chessClock.secondsToSubtractFromPlayer2(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		assertEquals(expected, actual);
+	}
 }

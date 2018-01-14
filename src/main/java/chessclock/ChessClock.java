@@ -51,6 +51,10 @@ public class ChessClock {
 	
 	protected int secondsToSubtractFromPlayer2(int secondsToSubtractFromPlayer1, int secondsToSubtractFromPlayer2, int limit)
 	{
-		return 0;
+		if (secondsToSubtractFromPlayer1 + secondsToSubtractFromPlayer2 > limit && secondsToSubtractFromPlayer2 >= secondsToSubtractFromPlayer1) 
+		{
+			secondsToSubtractFromPlayer2 = 0;
+		}
+		return secondsToSubtractFromPlayer2;
 	}
 }
