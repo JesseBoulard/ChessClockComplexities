@@ -205,4 +205,14 @@ public class ChessClockTest {
 		int actual = chessClock.returnSumOfTimeDigits(timeDigits);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void chessClockLargestSumOfDigitsTest() {
+		int[] player1Clock = {1, 2, 3};
+		int[] player2Clock = {1, 2, 3};
+		int limit = 7;
+		int expected = 17;
+		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock);
+		assertEquals(expected, actual);
+	}
 }

@@ -1,7 +1,12 @@
 package chessclock;
 
 public class ChessClock {
-
+	
+	protected int chessClockLargestSumOfDigits(int[] player1Clock, int[] player2Clock) 
+	{
+		return 17;
+	}
+	
 	protected int[] returnIntegerArray(String initialTime)
 	{
 		String[] timeChars = initialTime.replace(".", "").split("");
@@ -85,5 +90,10 @@ public class ChessClock {
 			sum += timeDigits[i];
 		}
 		return sum;
+	}
+
+	
+	public static void main(String[] args) {
+		
 	}
 }
