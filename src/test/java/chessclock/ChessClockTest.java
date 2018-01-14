@@ -234,4 +234,13 @@ public class ChessClockTest {
 		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifGreaterThanOrEqualToLimitReturnLimitTestWhenPassed6Limit7() {
+		int limit = 7;
+		int seconds = 6;
+		int expected = 6;
+		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, limit);
+		assertEquals(expected, actual);
+	}
 }

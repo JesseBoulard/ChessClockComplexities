@@ -101,9 +101,13 @@ public class ChessClock {
 		return sum;
 	}
 
-	public int ifGreaterThanOrEqualToLimitReturnLimit(int seconds, int limit) 
+	public int ifGreaterThanOrEqualToLimitReturnLimit(int secondsToSubtract, int limit) 
 	{
-		return 7;		
+		if (secondsToSubtract > limit) 
+		{
+			secondsToSubtract = limit;
+		}
+		return secondsToSubtract;
 	}
 	
 	public static void main(String[] args) 
