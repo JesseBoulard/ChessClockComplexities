@@ -225,4 +225,13 @@ public class ChessClockTest {
 		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifGreaterThanLimitReturnLimitTest() {
+		int limit = 7;
+		int seconds = 8;
+		int expected = 7;
+		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, limit);
+		assertEquals(expected, actual);
+	}
 }

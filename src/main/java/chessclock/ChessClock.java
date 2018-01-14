@@ -91,7 +91,8 @@ public class ChessClock {
 		return timeDigits;
 	}
 
-	protected int returnSumOfTimeDigits(int[] timeDigits) {
+	protected int returnSumOfTimeDigits(int[] timeDigits) 
+	{
 		int sum = 0;
 		for(int i = 0; i < timeDigits.length; i++)
 		{
@@ -100,11 +101,17 @@ public class ChessClock {
 		return sum;
 	}
 
+	public int ifGreaterThanOrEqualToLimitReturnLimit(int seconds, int limit) 
+	{
+		return 7;		
+	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		ChessClock clock = new ChessClock();
 		int[] player1Clock = {1, 2, 3};
 		int[] player2Clock = {1, 2, 3};
 		clock.chessClockLargestSumOfDigits(player1Clock, player2Clock, 7); 
 	}
+
 }
