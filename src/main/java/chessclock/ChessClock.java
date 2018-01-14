@@ -13,9 +13,8 @@ public class ChessClock {
 		return timeDigits;
 	}
 	
-	protected int ifGreaterThan8Return0(int seconds)
+	protected int ifGreaterThan8Return0(int secondsToSubtract)
 	{
-		int secondsToSubtract = seconds;
 		if (secondsToSubtract > 8) 
 		{
 			secondsToSubtract = 0;
@@ -23,21 +22,21 @@ public class ChessClock {
 		return secondsToSubtract;
 	}
 	
-	protected int ifGreaterThanLimitReturn0(int seconds, int limit)
+	protected int ifGreaterThanLimitReturn0(int secondsToSubtract, int limit)
 	{
-		if (seconds > limit) 
+		if (secondsToSubtract > limit) 
 		{
-			seconds = 0;
+			secondsToSubtract = 0;
 		}
-		return seconds;
+		return secondsToSubtract;
 	}
 	
-	protected int ifMinutesAndTensAre0Return0(int minutes, int tens, int seconds)
+	protected int ifMinutesAndTensAre0Return0(int minutes, int tens, int secondsToSubtract)
 	{
 		if (minutes == 0 && tens == 0) 
 		{
-			seconds = 0;
+			secondsToSubtract = 0;
 		}
-		return seconds;
+		return secondsToSubtract;
 	}
 }
