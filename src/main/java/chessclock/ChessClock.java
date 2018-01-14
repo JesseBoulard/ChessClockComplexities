@@ -22,4 +22,9 @@ public class ChessClock {
 		}
 		return secondsToSubtract;
 	}
+	
+	protected int ifGreaterThanLimitReturn0(int seconds, int limit)
+	{
+		return 0;
+	}
 }
