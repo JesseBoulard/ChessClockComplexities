@@ -144,4 +144,13 @@ public class ChessClockTest {
 		int actual = chessClock.secondsToSubtractFromPlayer1(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void returnTimeDigitsAfterSubtractionTest() {
+		int secondsToSubtract = 7;
+		int[] timeDigits = {3, 4, 5};
+		int[] expected = {0, 0, 0};
+		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
+		assertArrayEquals(expected, actual);
+	}
 }

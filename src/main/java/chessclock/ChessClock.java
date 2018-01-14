@@ -57,4 +57,12 @@ public class ChessClock {
 		}
 		return secondsToSubtractFromPlayer2;
 	}
+
+	protected int[] returnTimeDigitsAfterSubtraction(int secondsToSubtract, int[] timeDigits) 
+	{
+		timeDigits[0] = 0;
+		timeDigits[1] = 0;
+		timeDigits[2] = 0;
+		return timeDigits;
+	}
 }
