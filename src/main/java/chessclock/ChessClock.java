@@ -60,9 +60,21 @@ public class ChessClock {
 
 	protected int[] returnTimeDigitsAfterSubtraction(int secondsToSubtract, int[] timeDigits) 
 	{
-		timeDigits[0] = 0;
-		timeDigits[1] = 0;
-		timeDigits[2] = 0;
+		if (secondsToSubtract > 0)
+		{
+			if (timeDigits[timeDigits.length - 2] == 0
+					&& timeDigits[timeDigits.length - 3] > 0) 
+			{
+				timeDigits[timeDigits.length - 3] -= 1;
+				timeDigits[timeDigits.length - 2] = 5;
+				timeDigits[timeDigits.length - 1] = 9;
+			} 
+			else if (timeDigits[timeDigits.length - 2] > 0) 
+			{
+				timeDigits[timeDigits.length - 1] = 10 + (timeDigits[timeDigits.length - 1] - secondsToSubtract);
+				timeDigits[timeDigits.length - 2] -= 1;
+			}
+		}
 		return timeDigits;
 	}
 }

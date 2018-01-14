@@ -148,9 +148,19 @@ public class ChessClockTest {
 	@Test
 	public void returnTimeDigitsAfterSubtractionTest() {
 		int secondsToSubtract = 7;
-		int[] timeDigits = {3, 4, 5};
+		int[] timeDigits = {0, 0, 0};
 		int[] expected = {0, 0, 0};
 		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
 		assertArrayEquals(expected, actual);
 	}
+	
+	@Test
+	public void returnTimeDigitsAfterSubtractionTestWhenPassed345And7Subtracted() {
+		int secondsToSubtract = 7;
+		int[] timeDigits = {3, 4, 5};
+		int[] expected = {3, 3, 8};
+		int[] actual = chessClock.returnTimeDigitsAfterSubtraction(secondsToSubtract, timeDigits);
+		assertArrayEquals(expected, actual);
+	}
+	
 }
