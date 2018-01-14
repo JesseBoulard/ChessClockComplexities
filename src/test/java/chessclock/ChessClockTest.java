@@ -45,4 +45,13 @@ public class ChessClockTest {
 		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifGreaterThanLimitReturn0TestReturn8WhenPassed8() {
+		int limit = 8;
+		int seconds = 8;
+		int expected = 8;
+		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, limit);
+		assertEquals(expected, actual);
+	}
 }
