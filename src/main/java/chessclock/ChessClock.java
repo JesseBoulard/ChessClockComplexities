@@ -48,4 +48,9 @@ public class ChessClock {
 		}
 		return secondsToSubtractFromPlayer1;
 	}
+	
+	protected int secondsToSubtractFromPlayer2(int secondsToSubtractFromPlayer1, int secondsToSubtractFromPlayer2, int limit)
+	{
+		return 0;
+	}
 }

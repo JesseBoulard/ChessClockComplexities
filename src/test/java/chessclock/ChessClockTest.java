@@ -105,4 +105,14 @@ public class ChessClockTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void secondsToSubtractFromPlayer2Test() {
+		int secondsToSubtractFromPlayer2 = 7;
+		int secondsToSubtractFromPlayer1 = 6;
+		int limit = 8;
+		int expected = 0;
+		int actual = chessClock.secondsToSubtractFromPlayer2(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		assertEquals(expected, actual);
+	}
+	
 }
