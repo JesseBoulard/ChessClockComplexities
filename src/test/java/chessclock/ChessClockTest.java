@@ -205,4 +205,14 @@ public class ChessClockTest {
 		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void chessClockLargestSumOfDigitsTestWhenTimesAreNegative() {
+		int[] player1Clock = {-1, -5, -9};
+		int[] player2Clock = {-1, -5, -9};
+		int limit = 1;
+		int expected = -30;
+		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
+		assertEquals(expected, actual);
+	}
 }
