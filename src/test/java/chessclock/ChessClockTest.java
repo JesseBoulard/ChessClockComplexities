@@ -91,7 +91,7 @@ public class ChessClockTest {
 		int secondsToSubtractFromPlayer2 = 6;
 		int limit = 8;
 		int expected = 0;
-		int actual = chessClock.secondsToSubtractFromPlayer1(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
 		assertEquals(expected, actual);
 	}
 	
@@ -101,37 +101,7 @@ public class ChessClockTest {
 		int secondsToSubtractFromPlayer2 = 6;
 		int limit = 8;
 		int expected = 5;
-		int actual = chessClock.secondsToSubtractFromPlayer1(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void secondsToSubtractFromPlayer2Test() {
-		int secondsToSubtractFromPlayer2 = 7;
-		int secondsToSubtractFromPlayer1 = 6;
-		int limit = 8;
-		int expected = 0;
-		int actual = chessClock.secondsToSubtractFromPlayer2(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void secondsToSubtractFromPlayer2TestWhenPlayer2SecondsIsLesser() {
-		int secondsToSubtractFromPlayer2 = 6;
-		int secondsToSubtractFromPlayer1 = 7;
-		int limit = 8;
-		int expected = 6;
-		int actual = chessClock.secondsToSubtractFromPlayer2(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void secondsToSubtractFromPlayer2TestWhenLimitIsEqualToCombinedNumbers() {
-		int secondsToSubtractFromPlayer2 = 7;
-		int secondsToSubtractFromPlayer1 = 6;
-		int limit = 13;
-		int expected = 7;
-		int actual = chessClock.secondsToSubtractFromPlayer2(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
 		assertEquals(expected, actual);
 	}
 	
@@ -141,7 +111,7 @@ public class ChessClockTest {
 		int secondsToSubtractFromPlayer2 = 6;
 		int limit = 13;
 		int expected = 7;
-		int actual = chessClock.secondsToSubtractFromPlayer1(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
 		assertEquals(expected, actual);
 	}
 	
@@ -212,7 +182,17 @@ public class ChessClockTest {
 		int[] player2Clock = {1, 2, 3};
 		int limit = 7;
 		int expected = 17;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock);
+		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void chessClockLargestSumOfDigitsTestWhenLimitIs1000() {
+		int[] player1Clock = {1, 2, 3};
+		int[] player2Clock = {1, 2, 3};
+		int limit = 1000;
+		int expected = 22;
+		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
 		assertEquals(expected, actual);
 	}
 }
