@@ -54,4 +54,14 @@ public class ChessClockTest {
 		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, limit);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifMinutesAndTensAre0Return0Test() {
+		int minutes = 0;
+		int tens = 0;
+		int seconds = 8;
+		int expected = 0;
+		int actual = chessClock.ifMinutesAndTensAre0Return0(minutes, tens, seconds);
+		assertEquals(expected, actual);
+	}
 }
