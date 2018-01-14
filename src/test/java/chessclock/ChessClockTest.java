@@ -21,4 +21,11 @@ public class ChessClockTest {
 		assertArrayEquals(expected, actual);
 	}
 
+	@Test
+	public void ifGreaterThan8Return0Test() {
+		int seconds = 9;
+		int expected = 0;
+		int actual = chessClock.ifGreaterThan8Return0(seconds);
+		assertEquals(expected, actual);
+	}
 }

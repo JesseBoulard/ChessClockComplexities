@@ -12,4 +12,9 @@ public class ChessClock {
 		}
 		return timeDigits;
 	}
+	
+	protected int ifGreaterThan8Return0(int seconds)
+	{
+		return 0;
+	}
 }
