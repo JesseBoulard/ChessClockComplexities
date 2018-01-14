@@ -67,7 +67,7 @@ public class ChessClock {
 			{
 				timeDigits[timeDigits.length - 3] -= 1;
 				timeDigits[timeDigits.length - 2] = 5;
-				timeDigits[timeDigits.length - 1] = 9;
+				timeDigits[timeDigits.length - 1] = 10 + (timeDigits[timeDigits.length - 1] - secondsToSubtract);
 			} 
 			else if (timeDigits[timeDigits.length - 2] > 0) 
 			{
