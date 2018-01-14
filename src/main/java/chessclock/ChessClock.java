@@ -79,6 +79,11 @@ public class ChessClock {
 	}
 
 	protected int returnSumOfTimeDigits(int[] timeDigits) {
-		return 0;
+		int sum = 0;
+		for(int i = 0; i < timeDigits.length; i++)
+		{
+			sum += timeDigits[i];
+		}
+		return sum;
 	}
 }

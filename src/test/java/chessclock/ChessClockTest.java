@@ -197,4 +197,12 @@ public class ChessClockTest {
 		int actual = chessClock.returnSumOfTimeDigits(timeDigits);
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void returnSumOfTimeDigitsTestWhenPassed123() {
+		int[] timeDigits = {1, 2, 3};
+		int expected = 6;
+		int actual = chessClock.returnSumOfTimeDigits(timeDigits);
+		assertEquals(expected, actual);
+	}
 }
