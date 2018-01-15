@@ -303,4 +303,15 @@ public class ChessClockTest
 		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	public void chessClockSmallestSumOfDigitsTestWhenLimitIs14AndTensAre0() 
+	{
+		int[] player1Clock = {7, 0, 7};
+		int[] player2Clock = {7, 0, 1};
+		int limit = 11;
+		int expected = 14;
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		assertEquals(expected, actual);
+	}
 }
