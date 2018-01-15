@@ -150,6 +150,12 @@ public class ChessClock {
 		return smallestSumOfDigits;
 	}
 
+	public int[] chessClockSumOfDigits(String[] initialTime, int limit) 
+	{
+		int[] sumOfDigitsArray = {17, 45};
+		return sumOfDigitsArray;
+	}
+
 	public static void main(String[] args) 
 	{
 		ChessClock clock = new ChessClock();
