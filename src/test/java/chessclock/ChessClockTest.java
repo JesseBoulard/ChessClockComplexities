@@ -278,9 +278,19 @@ public class ChessClockTest
 		int[] player2Clock = {0, 0, 1};
 		int limit = 1000;
 		int expected = 1;
-		int actual = chessClock.chessClockSmallestSumOfDigits();
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
 		assertEquals(expected, actual);
 	}
-	
+
+	@Test
+	public void chessClockSmallestSumOfDigitsTestWhenLimitIs0() 
+	{
+		int[] player1Clock = {7, 2, 9};
+		int[] player2Clock = {0, 0, 1};
+		int limit = 0;
+		int expected = 19;
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		assertEquals(expected, actual);
+	}
 
 }
