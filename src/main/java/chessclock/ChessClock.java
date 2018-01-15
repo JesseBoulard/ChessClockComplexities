@@ -2,6 +2,16 @@ package chessclock;
 
 public class ChessClock {
 
+	public int[] chessClockSumOfDigits(String[] initialTime, int limit) 
+	{
+		int [] player1Clock = returnIntegerArray(initialTime[0]);
+		int [] player2Clock = returnIntegerArray(initialTime[1]);
+		int [] player1ClockCopy = returnIntegerArray(initialTime[0]);
+		int [] player2ClockCopy = returnIntegerArray(initialTime[1]);
+		int[] sumOfDigitsArray = {chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit), chessClockLargestSumOfDigits(player1ClockCopy, player2ClockCopy, limit)};
+		return sumOfDigitsArray;
+	}
+
 	protected int chessClockLargestSumOfDigits(int[] player1Clock, int[] player2Clock, int limit) 
 	{
 		int secondsToSubtractFromPlayer1 = player1Clock[player1Clock.length - 1] + 1;
@@ -22,6 +32,45 @@ public class ChessClock {
 		int player2ClockSumOfDigits = returnSumOfTimeDigits(player2Clock);
 
 		return player1ClockSumOfDigits + player2ClockSumOfDigits;
+	}
+
+	protected int chessClockSmallestSumOfDigits(int[] player1Clock, int[] player2Clock, int limit) 
+	{
+		int secondsToSubtractFromPlayer1 = player1Clock[player1Clock.length - 1];
+		int secondsToSubtractFromPlayer2 = player2Clock[player2Clock.length - 1];
+		secondsToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(secondsToSubtractFromPlayer1, limit);
+		limit -= secondsToSubtractFromPlayer1;
+		secondsToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(secondsToSubtractFromPlayer2, limit);
+		limit -= secondsToSubtractFromPlayer2;
+		int tensToSubtractFromPlayer1 = player1Clock[player1Clock.length - 2];
+		int tensToSubtractFromPlayer2 = player2Clock[player2Clock.length - 2];
+		tensToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(tensToSubtractFromPlayer1, limit / 10);
+		limit -= (tensToSubtractFromPlayer1 * 10);
+		tensToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(tensToSubtractFromPlayer2, limit / 10);
+		limit -= (tensToSubtractFromPlayer2 * 10);
+		int minutesToSubtractFromPlayer1 = player1Clock[player1Clock.length - 3];
+		int minutesToSubtractFromPlayer2 = player2Clock[player2Clock.length - 3];
+		minutesToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(minutesToSubtractFromPlayer1, limit / 60);
+		limit -= (minutesToSubtractFromPlayer1 * 60);
+		minutesToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(minutesToSubtractFromPlayer2, limit / 60);
+
+		player1Clock[player1Clock.length - 1] -= secondsToSubtractFromPlayer1;
+		player1Clock[player1Clock.length - 2] -= tensToSubtractFromPlayer1;
+		player1Clock[player1Clock.length - 3] -= minutesToSubtractFromPlayer1;
+
+		player2Clock[player2Clock.length - 1] -= secondsToSubtractFromPlayer2;
+		player2Clock[player2Clock.length - 2] -= tensToSubtractFromPlayer2;
+		player2Clock[player2Clock.length - 3] -= minutesToSubtractFromPlayer2;
+
+		int player1ClockSumOfDigits = returnSumOfTimeDigits(player1Clock);
+		int player2ClockSumOfDigits = returnSumOfTimeDigits(player2Clock);
+		int smallestSumOfDigits = player1ClockSumOfDigits + player2ClockSumOfDigits;
+		if (smallestSumOfDigits == 0)
+		{
+			smallestSumOfDigits = 1;
+		}
+
+		return smallestSumOfDigits;
 	}
 
 	protected int[] returnIntegerArray(String initialTime)
@@ -111,58 +160,14 @@ public class ChessClock {
 		// in order for this method to be used correctly on both clocks, use "limit -= secondsToSubtract" after this method;
 	}
 
-	protected int chessClockSmallestSumOfDigits(int[] player1Clock, int[] player2Clock, int limit) 
-	{
-		int secondsToSubtractFromPlayer1 = player1Clock[player1Clock.length - 1];
-		int secondsToSubtractFromPlayer2 = player2Clock[player2Clock.length - 1];
-		secondsToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(secondsToSubtractFromPlayer1, limit);
-		limit -= secondsToSubtractFromPlayer1;
-		secondsToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(secondsToSubtractFromPlayer2, limit);
-		limit -= secondsToSubtractFromPlayer2;
-		int tensToSubtractFromPlayer1 = player1Clock[player1Clock.length - 2];
-		int tensToSubtractFromPlayer2 = player2Clock[player2Clock.length - 2];
-		tensToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(tensToSubtractFromPlayer1, limit / 10);
-		limit -= (tensToSubtractFromPlayer1 * 10);
-		tensToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(tensToSubtractFromPlayer2, limit / 10);
-		limit -= (tensToSubtractFromPlayer2 * 10);
-		int minutesToSubtractFromPlayer1 = player1Clock[player1Clock.length - 3];
-		int minutesToSubtractFromPlayer2 = player2Clock[player2Clock.length - 3];
-		minutesToSubtractFromPlayer1 = ifGreaterThanOrEqualToLimitReturnLimit(minutesToSubtractFromPlayer1, limit / 60);
-		limit -= (minutesToSubtractFromPlayer1 * 60);
-		minutesToSubtractFromPlayer2 = ifGreaterThanOrEqualToLimitReturnLimit(minutesToSubtractFromPlayer2, limit / 60);
-
-		player1Clock[player1Clock.length - 1] -= secondsToSubtractFromPlayer1;
-		player1Clock[player1Clock.length - 2] -= tensToSubtractFromPlayer1;
-		player1Clock[player1Clock.length - 3] -= minutesToSubtractFromPlayer1;
-
-		player2Clock[player2Clock.length - 1] -= secondsToSubtractFromPlayer2;
-		player2Clock[player2Clock.length - 2] -= tensToSubtractFromPlayer2;
-		player2Clock[player2Clock.length - 3] -= minutesToSubtractFromPlayer2;
-
-		int player1ClockSumOfDigits = returnSumOfTimeDigits(player1Clock);
-		int player2ClockSumOfDigits = returnSumOfTimeDigits(player2Clock);
-		int smallestSumOfDigits = player1ClockSumOfDigits + player2ClockSumOfDigits;
-		if (smallestSumOfDigits == 0)
-		{
-			smallestSumOfDigits = 1;
-		}
-
-		return smallestSumOfDigits;
-	}
-
-	public int[] chessClockSumOfDigits(String[] initialTime, int limit) 
-	{
-		int[] sumOfDigitsArray = {17, 45};
-		return sumOfDigitsArray;
-	}
-
 	public static void main(String[] args) 
 	{
 		ChessClock clock = new ChessClock();
-		int[] player1Clock = {1, 2, 3};
-		int[] player2Clock = {1, 2, 3};
-		clock.chessClockLargestSumOfDigits(player1Clock, player2Clock, 7); 
-		clock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, 7); 
+		String[] initialTime = {"9.59", "9.01"};
+		int limit = 129;
+		int[] clockDigitsArray = clock.chessClockSumOfDigits(initialTime, limit);
+		System.out.println(clockDigitsArray[0]);
+		System.out.println(clockDigitsArray[1]);
 	}
 
 }
