@@ -396,5 +396,14 @@ public class ChessClockTest
 		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
 		assertArrayEquals(expected, actual);
 	}
-	
+
+	@Test
+	public void chessClockSumOfDigitsTestWhenSecondsAndMinutesAreZero() 
+	{
+		String[] initialTime = {"0.10", "0.10"};
+		int limit = 11;
+		int[] expected = {1, 18};
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		assertArrayEquals(expected, actual);
+	}
 }
