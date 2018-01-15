@@ -1,12 +1,12 @@
 package chessclock;
 
 public class ChessClock {
-	
+
 	protected int chessClockLargestSumOfDigits(int[] player1Clock, int[] player2Clock, int limit) 
 	{
 		int secondsToSubtractFromPlayer1 = player1Clock[player1Clock.length - 1] + 1;
 		int secondsToSubtractFromPlayer2 = player2Clock[player2Clock.length - 1] + 1;
-		
+
 		secondsToSubtractFromPlayer1 = ifGreaterThan8Return0(secondsToSubtractFromPlayer1);
 		secondsToSubtractFromPlayer1 = ifGreaterThanLimitReturn0(secondsToSubtractFromPlayer1, limit);
 		secondsToSubtractFromPlayer1 = ifMinutesAndTensAre0Return0(player1Clock[player1Clock.length - 3], player1Clock[player1Clock.length - 2], secondsToSubtractFromPlayer1);
@@ -23,7 +23,7 @@ public class ChessClock {
 
 		return player1ClockSumOfDigits + player2ClockSumOfDigits;
 	}
-	
+
 	protected int[] returnIntegerArray(String initialTime)
 	{
 		String[] timeChars = initialTime.replace(".", "").split("");
@@ -34,7 +34,7 @@ public class ChessClock {
 		}
 		return timeDigits;
 	}
-	
+
 	protected int ifGreaterThan8Return0(int secondsToSubtract)
 	{
 		if (secondsToSubtract > 8) 
@@ -43,7 +43,7 @@ public class ChessClock {
 		}
 		return secondsToSubtract;
 	}
-	
+
 	protected int ifGreaterThanLimitReturn0(int secondsToSubtract, int limit)
 	{
 		if (secondsToSubtract > limit) 
@@ -52,7 +52,7 @@ public class ChessClock {
 		}
 		return secondsToSubtract;
 	}
-	
+
 	protected int ifMinutesAndTensAre0Return0(int minutes, int tens, int secondsToSubtract)
 	{
 		if (minutes == 0 && tens == 0) 
@@ -61,7 +61,7 @@ public class ChessClock {
 		}
 		return secondsToSubtract;
 	}
-	
+
 	protected int secondsToSubtractFromClock(int secondsToSubtractFromPlayer1, int secondsToSubtractFromPlayer2, int limit)
 	{
 		if (secondsToSubtractFromPlayer1 + secondsToSubtractFromPlayer2 > limit && secondsToSubtractFromPlayer1 >= secondsToSubtractFromPlayer2 && secondsToSubtractFromPlayer2 > 0) 
@@ -101,15 +101,21 @@ public class ChessClock {
 		return sum;
 	}
 
-	public int ifGreaterThanOrEqualToLimitReturnLimit(int secondsToSubtract, int limit) 
+	protected int ifGreaterThanOrEqualToLimitReturnLimit(int secondsToSubtract, int limit) 
 	{
 		if (secondsToSubtract > limit) 
 		{
 			secondsToSubtract = limit;
 		}
 		return secondsToSubtract;
+		// in order for this method to be used correctly on both clocks, use "limit -= secondsToSubtract" after this method;
 	}
-	
+
+	protected int chessClockSmallestSumOfDigits() 
+	{
+		return 1;
+	}
+
 	public static void main(String[] args) 
 	{
 		ChessClock clock = new ChessClock();
