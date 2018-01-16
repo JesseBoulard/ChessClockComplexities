@@ -45,20 +45,20 @@ public class ChessClockTest
 	@Test
 	public void ifGreaterThanLimitReturn0Test() 
 	{
-		int limit = 8;
+		int timeLimit = 8;
 		int seconds = 9;
 		int expected = 0;
-		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, limit);
+		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void ifGreaterThanLimitReturn0TestReturn8WhenPassed8() 
 	{
-		int limit = 8;
+		int timeLimit = 8;
 		int seconds = 8;
 		int expected = 8;
-		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, limit);
+		int actual = chessClock.ifGreaterThanLimitReturn0(seconds, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
@@ -96,35 +96,35 @@ public class ChessClockTest
 	}
 	
 	@Test
-	public void secondsToSubtractFromPlayer1Test() 
+	public void secondsToBeSubtractedFromPlayer1Test() 
 	{
-		int secondsToSubtractFromPlayer1 = 7;
-		int secondsToSubtractFromPlayer2 = 6;
-		int limit = 8;
+		String[] initialTime = {"1.16", "1.07"};
+		int secondsToBeSubtractedFromPlayer1 = 7;
+		int timeLimit = 8;
 		int expected = 0;
-		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		int actual = chessClock.secondsToSubtractFromClock(initialTime, secondsToBeSubtractedFromPlayer1, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void secondsToSubtractFromPlayer1TestWhenPlayer1SecondsIsLesser() 
+	public void secondsToBeSubtractedFromPlayer1TestWhenPlayer1SecondsIsLesser() 
 	{
-		int secondsToSubtractFromPlayer1 = 5;
-		int secondsToSubtractFromPlayer2 = 6;
-		int limit = 8;
-		int expected = 5;
-		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		String[] initialTime = {"1.25", "1.26"};
+		int secondsToBeSubtractedFromPlayer1 = 6;
+		int timeLimit = 8;
+		int expected = 6;
+		int actual = chessClock.secondsToSubtractFromClock(initialTime, secondsToBeSubtractedFromPlayer1, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	public void secondsToSubtractFromPlayer1TestWhenLimitIsEqualToCombinedNumbers() 
+	public void secondsToBeSubtractedFromPlayer1TestWhenLimitIsEqualToCombinedNumbers() 
 	{
-		int secondsToSubtractFromPlayer1 = 7;
-		int secondsToSubtractFromPlayer2 = 6;
-		int limit = 13;
+		String[] initialTime = {"1.16", "1.17"};
+		int secondsToBeSubtractedFromPlayer1 = 7;
+		int timeLimit = 13;
 		int expected = 7;
-		int actual = chessClock.secondsToSubtractFromClock(secondsToSubtractFromPlayer1, secondsToSubtractFromPlayer2, limit);
+		int actual = chessClock.secondsToSubtractFromClock(initialTime, secondsToBeSubtractedFromPlayer1, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
@@ -199,75 +199,50 @@ public class ChessClockTest
 	@Test
 	public void chessClockLargestSumOfDigitsTest() 
 	{
-		int[] player1Clock = {1, 2, 3};
-		int[] player2Clock = {1, 2, 3};
-		int limit = 7;
+		String[] initialTime = {"1.23", "123"};
+		int timeLimit = 7;
 		int expected = 17;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockLargestSumOfDigits(initialTime, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void chessClockLargestSumOfDigitsTestWhenLimitIs1000() 
 	{
-		int[] player1Clock = {1, 2, 3};
-		int[] player2Clock = {1, 2, 3};
-		int limit = 1000;
+		String[] initialTime = {"1.23", "123"};
+		int timeLimit = 1000;
 		int expected = 22;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockLargestSumOfDigits(initialTime, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void chessClockLargestSumOfDigitsTestWhenTimesEndIn9() 
 	{
-		int[] player1Clock = {6, 5, 9};
-		int[] player2Clock = {7, 5, 9};
-		int limit = 1;
+		String[] initialTime = {"6.59", "7.59"};
+		int timeLimit = 1;
 		int expected = 41;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void chessClockLargestSumOfDigitsTestWhenTimesAreNegative() 
-	{
-		int[] player1Clock = {-1, -5, -9};
-		int[] player2Clock = {-1, -5, -9};
-		int limit = 1;
-		int expected = -30;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void chessClockLargestSumOfDigitsTestWhenTimesAreMixed() 
-	{
-		int[] player1Clock = {-1, -5, 9};
-		int[] player2Clock = {-1, -5, 9};
-		int limit = 14;
-		int expected = 6;
-		int actual = chessClock.chessClockLargestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockLargestSumOfDigits(initialTime, timeLimit);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void ifGreaterThanOrEqualToLimitReturnLimitTest() 
 	{
-		int limit = 7;
+		int timeLimit = 7;
 		int seconds = 8;
 		int expected = 7;
-		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, limit);
+		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, timeLimit);
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void ifGreaterThanOrEqualToLimitReturnLimitTestWhenPassed6Limit7() 
 	{
-		int limit = 7;
+		int timeLimit = 7;
 		int seconds = 6;
 		int expected = 6;
-		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, limit);
+		int actual = chessClock.ifGreaterThanOrEqualToLimitReturnLimit(seconds, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -276,9 +251,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {7, 2, 9};
 		int[] player2Clock = {0, 0, 1};
-		int limit = 1000;
+		int timeLimit = 1000;
 		int expected = 1;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -287,9 +262,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {7, 2, 9};
 		int[] player2Clock = {0, 0, 1};
-		int limit = 0;
+		int timeLimit = 0;
 		int expected = 19;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -298,9 +273,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {7, 2, 7};
 		int[] player2Clock = {0, 0, 1};
-		int limit = 8;
+		int timeLimit = 8;
 		int expected = 9;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -309,9 +284,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {7, 0, 7};
 		int[] player2Clock = {7, 0, 1};
-		int limit = 11;
+		int timeLimit = 11;
 		int expected = 14;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -320,9 +295,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {7, 0, 7};
 		int[] player2Clock = {7, 0, 1};
-		int limit = 129;
+		int timeLimit = 129;
 		int expected = 12;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -331,9 +306,9 @@ public class ChessClockTest
 	{
 		int[] player1Clock = {0, 2, 7};
 		int[] player2Clock = {0, 2, 1};
-		int limit = 129;
+		int timeLimit = 129;
 		int expected = 1;
-		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, limit);
+		int actual = chessClock.chessClockSmallestSumOfDigits(player1Clock, player2Clock, timeLimit);
 		assertEquals(expected, actual);
 	}
 
@@ -341,9 +316,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTest() 
 	{
 		String[] initialTime = {"9.59", "9.01"};
-		int limit = 129;
+		int timeLimit = 129;
 		int[] expected = {17, 45};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -351,9 +326,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenLimitIs0() 
 	{
 		String[] initialTime = {"9.59", "9.01"};
-		int limit = 0;
+		int timeLimit = 0;
 		int[] expected = {33, 33};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -361,9 +336,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenLimitIs1000() 
 	{
 		String[] initialTime = {"9.59", "9.01"};
-		int limit = 1000;
+		int timeLimit = 1000;
 		int[] expected = {3, 45};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -371,9 +346,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenTimeIsTiny() 
 	{
 		String[] initialTime = {"0.01", "0.01"};
-		int limit = 10;
+		int timeLimit = 10;
 		int[] expected = {1, 2};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -381,9 +356,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenSecondsCombinedExceedLimit() 
 	{
 		String[] initialTime = {"2.05", "2.04"};
-		int limit = 7;
+		int timeLimit = 7;
 		int[] expected = {6, 22};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -391,9 +366,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenSecondsAndTensAreZero() 
 	{
 		String[] initialTime = {"2.00", "2.00"};
-		int limit = 1000;
+		int timeLimit = 1000;
 		int[] expected = {1, 30};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -401,9 +376,9 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenSecondsAndMinutesAreZero() 
 	{
 		String[] initialTime = {"0.10", "0.10"};
-		int limit = 11;
+		int timeLimit = 11;
 		int[] expected = {1, 18};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -411,9 +386,19 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenOneTimeIsTinyAndLimitIsSmall() 
 	{
 		String[] initialTime = {"1.53", "0.03"};
-		int limit = 4;
+		int timeLimit = 4;
 		int[] expected = {8, 17};
-		int[] actual = chessClock.chessClockSumOfDigits(initialTime, limit);
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
+		assertArrayEquals(expected, actual);
+	}
+
+	@Test
+	public void chessClockSumOfDigitsTestWhenMinusOneCreatesTwoDifferentValuesAndLimitIs1() 
+	{
+		String[] initialTime = {"1.00", "1.10"};
+		int timeLimit = 1;
+		int[] expected = {3, 16};
+		int[] actual = chessClock.chessClockSumOfDigits(initialTime, timeLimit);
 		assertArrayEquals(expected, actual);
 	}
 }
