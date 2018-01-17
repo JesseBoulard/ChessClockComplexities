@@ -158,6 +158,10 @@ public class ChessClock {
 		int whichClock = 3;
 		if (secondsToBeSubtractedFromPlayer1 + secondsToBeSubtractedFromPlayer2 > timeLimit)
 		{
+			if (secondsToBeSubtractedFromPlayer1 <= secondsToBeSubtractedFromPlayer2)
+			{
+				whichClock = 1;
+			}
 			if (secondsToBeSubtractedFromPlayer1 >= secondsToBeSubtractedFromPlayer2)
 			{
 				whichClock = 2;
@@ -166,15 +170,19 @@ public class ChessClock {
 			{
 				whichClock = 1;
 			}
-			if (player1Clock[player1Clock.length - 2] == 0 && player1Clock[player1Clock.length - 3] > 0
-					&& player2Clock[player2Clock.length - 2] > 0)
+			if (secondsToBeSubtractedFromPlayer1 == 0)
 			{
-				whichClock = 1;
+				whichClock = 2;
 			}
 			if (player1Clock[player1Clock.length - 2] == 0 && player1Clock[player1Clock.length - 3] > 0
 					&& player2Clock[player2Clock.length - 2] > 0)
 			{
 				whichClock = 1;
+			}
+			if (player2Clock[player2Clock.length - 2] == 0 && player2Clock[player2Clock.length - 3] > 0
+					&& player1Clock[player1Clock.length - 2] > 0)
+			{
+				whichClock = 2;
 			}
 		}
 		return whichClock;

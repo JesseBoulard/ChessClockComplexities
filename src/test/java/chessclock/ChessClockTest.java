@@ -22,9 +22,8 @@ public class ChessClockTest
 	@Test
 	public void convertInitialTimeToIntArrayTest() 
 	{
-		String initialTime = "3.45";
 		int[] expected = {3, 4, 5};
-		int[] actual = largestClock.returnIntegerArray(initialTime);
+		int[] actual = largestClock.returnIntegerArray(largestClock.initialTime[0]);
 		assertArrayEquals(expected, actual);
 	}
 
@@ -102,8 +101,10 @@ public class ChessClockTest
 	@Test
 	public void secondsToBeSubtractedFromPlayer1Test() 
 	{
-		largestClock.initialTime[0] = "1.16";
-		largestClock.initialTime[1] = "1.07";
+		int[] player1Clock = {1, 1, 6};
+		int[] player2Clock = {1, 0, 7};
+		largestClock.player1Clock = player1Clock;
+		largestClock.player2Clock = player2Clock;
 		largestClock.secondsToBeSubtractedFromPlayer1 = 7;
 		largestClock.secondsToBeSubtractedFromPlayer2 = 8;
 		largestClock.timeLimit = 8;
@@ -408,6 +409,16 @@ public class ChessClockTest
 	public void chessClockSumOfDigitsTestWhenMinusOneCreatesTwoDifferentValuesAndLimitIs1() 
 	{
 		String[] initialTime = {"1.00", "1.10"};
+		int timeLimit = 1;
+		int[] expected = {3, 16};
+		int[] actual = ChessClock.chessClockSumOfDigits(initialTime, timeLimit);
+		assertArrayEquals(expected, actual);
+	}
+
+	@Test
+	public void chessClockSumOfDigitsTestWhenMinusOneCreatesTwoDifferentValuesAndLimitIs1Reversed() 
+	{
+		String[] initialTime = {"1.10", "1.00"};
 		int timeLimit = 1;
 		int[] expected = {3, 16};
 		int[] actual = ChessClock.chessClockSumOfDigits(initialTime, timeLimit);
